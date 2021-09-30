@@ -1,1 +1,2 @@
 # nft-generator
+node still doesn't support in an easy fashion ES modules natively (we would need to use `require` keyword instead of `import from`). That is why I am using experimental mode and running files as `mjs`. To run just fire `npm start`.
