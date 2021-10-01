@@ -45,63 +45,43 @@ const getElements = (path) => {
         });
 };
 
-const layers = [
+const config = [
     {
-        id: 1,
         name: "background",
-        location: `${dir}\\background\\`,
         position: {x:0,y:0},
-        size: size, 
-        elements: getElements(`${dir}\\background\\`),
     },
     {
-        id: 2,
         name: "ball",
-        location: `${dir}/ball/`,
         position: {x:0,y:0},
-        size: size, 
-        elements: getElements(`${dir}/ball/`),
     },
     {
-        id: 3,
         name: "eye color",
-        location: `${dir}/eye color/`,
         position: {x:0,y:0},
-        size: size, 
-        elements: getElements(`${dir}/eye color/`),
     },
     {
-        id: 4,
         name: "iris",
-        location: `${dir}/iris/`,
         position: {x:0,y:0},
-        size: size, 
-        elements: getElements(`${dir}/iris/`),
     },
     {
-        id: 5,
         name: "shine",
-        location: `${dir}/shine/`,
         position: {x:0,y:0},
-        size: size, 
-        elements: getElements(`${dir}/shine/`),
     },
     {
-        id: 6,
         name: "bottom lid",
-        location: `${dir}/bottom lid/`,
         position: {x:0,y:0},
-        size: size, 
-        elements: getElements(`${dir}/bottom lid/`),
     },
     {
-        id: 7,
         name: "top lid",
-        location: `${dir}/top lid/`,
         position: {x:0,y:0},
-        size: size, 
-        elements: getElements(`${dir}/top lid/`),
     },
 ];
+
+const layers = config.map((c, index) => {
+    c.id = index + 1;
+    c.location = path.join(dir, c.name);
+    c.elements = getElements(c.location);
+    c.size = size;
+    return c;
+});
 
 export {layers, width, height};
