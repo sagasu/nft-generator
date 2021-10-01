@@ -1,8 +1,6 @@
 import fs from "fs";
 import can from "canvas";
-
-const height = 1000;
-const width = 1000;
+import {layers, width, height} from './layers/config.mjs';
 
 const saveLayer = (_canvas) => {
     fs.writeFileSync("./newImage.png", _canvas.toBuffer("image/png"));
