@@ -12,7 +12,8 @@ const addRarity = (_str) => {
         if(_str.includes(r.key)){
             itemRarity = r.val;
         }
-    })
+    });
+    return itemRarity;
 };
 
 const cleanName = (_str) => {
@@ -24,6 +25,8 @@ const cleanName = (_str) => {
 }
 
 const getElements = (path) => {
+    console.log(path);
+
     return fs
         .readdirSync(path)
         .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))

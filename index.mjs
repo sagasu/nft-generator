@@ -1,6 +1,7 @@
 import fs from "fs";
 import can from "canvas";
 import {layers, width, height} from './src/config.mjs';
+const edition = 1;
 
 const saveLayer = (_canvas) => {
     fs.writeFileSync("./newImage.png", _canvas.toBuffer("image/png"));
@@ -9,12 +10,17 @@ const saveLayer = (_canvas) => {
 const canvas = can.createCanvas(height, width);
 const ctx = canvas.getContext("2d");
 
-const drawLayer = async () => {
-    const x = 0;
-    const y = 0;
+const drawLayer = async (_layer, _edition) => {
+    let element = _layer.elements[Math.floor(Math.random() * _layer.elements.length)];
+    
+    console.log(element);
     const image = await can.loadImage("./eye_ball.png");
-    ctx.drawImage(image, x, y, height, width);
+    ctx.drawImage(image, 0, 0, height, width);
     saveLayer(canvas);
 };
 
-drawLayer();
+[...Array(edition)].map((_, i) => {
+    layers.forEach((layer) => {
+        drawLayer(layer, i);
+    });
+});

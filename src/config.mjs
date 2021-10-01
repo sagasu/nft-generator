@@ -2,14 +2,14 @@ import fs from "fs";
 import path from 'path';
 import {getElements} from './rare.mjs';
 
-const dir = process.cwd() + "\\layers";
+const dir = path.join(process.cwd(),"layers");
 const width = 1000;
 const height = 1000;
 const size = {x:0,y:0};
 
 console.log("dir " + dir + "\n");
 
-const config = [
+const orderOfApplyingLayers = [
     {
         name: "background",
         position: {x:0,y:0},
@@ -40,7 +40,7 @@ const config = [
     },
 ];
 
-const layers = config.map((c, index) => {
+const layers = orderOfApplyingLayers.map((c, index) => {
     c.id = index + 1;
     c.location = path.join(dir, c.name);
     c.elements = getElements(c.location);
