@@ -5,9 +5,7 @@ import {getElements} from './rare.mjs';
 const dir = path.join(process.cwd(),"layers");
 const width = 1000;
 const height = 1000;
-const size = {x:0,y:0};
-
-console.log("dir " + dir + "\n");
+const size = {width:width, height:height};
 
 const orderOfApplyingLayers = [
     {

@@ -25,8 +25,6 @@ const cleanName = (_str) => {
 }
 
 const getElements = (path) => {
-    console.log(path);
-
     return fs
         .readdirSync(path)
         .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))
